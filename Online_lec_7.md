@@ -62,7 +62,7 @@ ggplot(count.occupation,aes(x="",y=prop,fill=Occupation))+
   labs(title = "Occupation of CUHK SZ students after graduation")
 ```
 
----
+
 
 ## Multiple Bars Chart / Faceting
 
@@ -90,5 +90,9 @@ ggplot(Student_BMI_2,aes(fill=Gender,x=BMI))+
 
 ```R
 subset(Survey$Followed_GEC_fac, Survey$Gender_fac=="Male")
+```
+
+```R
+Survey_GE_class_choice_1_men<-subset(Survey_GE_class_choice_1,Gender=="Male")
 ```
 
