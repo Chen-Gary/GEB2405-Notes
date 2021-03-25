@@ -1,12 +1,14 @@
 # Online Lecture 8 - Bivariate analysis - cross tabulation
 
-package used
+Packages used
 
 ```R
 library(gmodels) # for `CrossTable()`
+library(sjstats) # for cramer'V test - `crosstable_statistics()`
+library(sjPlot) # for `sjPlot::sjt.xtab()`
 ```
 
-
+---
 
 ```R
 CrossTable(data$x, data$y)
@@ -33,6 +35,41 @@ CrossTable(data$x, data$y, chisq=TRUE) # see p-value
 
 ![](Online_lec_8_img/1.png)
 
-Do we have other test methods to examine the correlation between the two variables?
+Do we have other test methods to examine the correlation between two variables?
 
-30:05​
+**chisq**: If `TRUE`, the results of a chi-square test will be included
+
+**fisher**: If `TRUE`, the results of a Fisher Exact test will be included
+
+**mcnemar**: If `TRUE`, the results of a McNemar test will be included
+
+```R
+CrossTable(data$x, data$y, fisher=TRUE) # only apply to 2*2 table
+```
+
+---
+
+cramer'V ==> **how strong** the correlation is
+
+![](Online_lec_8_img/2.png)
+
+```R
+library(sjstats)
+
+crosstable_statistics(df, x1=varname1, x2=varname2, statistics=c("cramer"))
+```
+
+---
+
+The outputs of previous `CrossTable()` and `crosstable_statistics()` is not good looking
+
+===> want beautiful table that is ready to publish
+
+```R
+library(sjPlot)
+
+sjPlot::sjt.xtab(df$var1, df$var2) # only show frequency
+
+sjPlot::sjt.xtab(df$var1, df$var2, show.row.prc=TRUE, show.col.prc=TRUE)
+```
+
