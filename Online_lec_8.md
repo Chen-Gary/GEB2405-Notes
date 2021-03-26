@@ -73,3 +73,16 @@ sjPlot::sjt.xtab(df$var1, df$var2) # only show frequency
 sjPlot::sjt.xtab(df$var1, df$var2, show.row.prc=TRUE, show.col.prc=TRUE)
 ```
 
+
+
+# Tutorial 8
+
+$H_0$ = null hypothesis (i.e. the two variables are independent?)
+
+If p-value < 0.05, we can reject $H_0$ with 95% confidence. 
+
+In other words, if p-value < 0.05, the two variables are statistically correlated.
+
+
+
+You may check the `.docx` file of Week 8 for more info of the above three statistic tests, but that will not help much.
