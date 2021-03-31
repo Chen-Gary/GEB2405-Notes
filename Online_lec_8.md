@@ -15,7 +15,7 @@ CrossTable(data$x, data$y)
 CrossTable(data$x, data$y, prop.t=FALSE, prop.chisq=FALSE)
 ```
 
-**expected**: If `TRUE`, chisq will be set to `TRUE` and expected cell counts from the chisq will be included **(next lec)**
+**expected**: If `TRUE`, chisq will be set to `TRUE` and expected cell counts from the chisq will be included **(next lec)** 
 
 **prop.r**: If `TRUE`, row proportions will be included
 
@@ -23,7 +23,7 @@ CrossTable(data$x, data$y, prop.t=FALSE, prop.chisq=FALSE)
 
 **prop.t**: If `TRUE`, table proportions will be included
 
-**prop.chisq**: If `TRUE`, chi-square contribution of each cell will be included **(next lec)**
+**prop.chisq**: If `TRUE`, chi-square contribution of each cell will be included **(next lec)** 
 
 
 
