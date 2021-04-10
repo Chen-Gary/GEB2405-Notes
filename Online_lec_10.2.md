@@ -47,11 +47,17 @@ library(jtools)      # for `export_summs()`
 library(LogisticDx)
 
 gof(stored_binomial_model)
+
+# By default, g=10
+# If g=10 dose not work, just try other values of g
+# gof(stored_binomial_model, g=8)
 ```
 
 ![](Online_lec_10_img/5.png)
 
-The p-value in all the 4 tests are > 0.05, so the model is strong enough.
+~~The p-value in all the 4 tests are > 0.05, so the model is strong enough.~~
+
+(These p-values are not reliable. Only focus on **ROC** in `gof()`.)
 
 
 
@@ -74,3 +80,9 @@ export_summs(logitman1,logitman2,logitman3,scale=TRUE)
 
 Note that R does not display the **basic outcome** (the level with which other levels are compared).
 
+
+
+How to interpret the results?
+
+* Pseudo R2: greater ==> better model
+* AIC: smaller ==> better model
