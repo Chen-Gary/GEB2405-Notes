@@ -1,3 +1,9 @@
+(This part will not be covered in the final exam!)
+
+
+
+[TOC]
+
 # Online Lecture 11 - What to do when assumptions are not matched
 
 ### What if we have collinearity

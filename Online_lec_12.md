@@ -21,9 +21,10 @@ df$dep_var_2 <- relevel(df$dep_var, ref="level_name")
 ml$prog_2 <- relevel(ml$prog, ref = "academic")
 
 # create the model
-stored_model <- multinom(basic_outcome ~ ind_var1 + ind_var2 + ind_varn, data=data_name)
+stored_model <- multinom(df$basic_outcome ~ ind_var1 + ind_var2 + ind_varn, data=data_name)
 
-multinomial_model1 <- multinom(prog_2 ~ ses + write, data = ml)
+multinomial_model1 <- multinom(ml$prog_2 ~ ses + write, data = ml)
+#multinomial_model1 <- multinom(prog_2 ~ ses + write, data = ml) # ???
 # different from `glm()` you should define the basic outcome
 
 summary(multinomial_model1)
