@@ -1,5 +1,7 @@
 # Online Lecture 12 - Multinomial Logistic Regression
 
+## Online Lecture 12
+
 Multinomial Logistic Regression:
 
 The dependent variable is categorical and has > 2 levels
@@ -70,4 +72,77 @@ stargazer(multinomial_model1, type="text", coef=list(multinomial_model1_rrr), p.
 
 
 We build in total 3 models... If we simply choose the model with lowest AIC for interpretation, we may get wrong conclusion! We need to refer to the sociohistorical context to provide insightful explanation.
+
+
+
+## Tutorial 12
+
+### Test the goodness and fitness of a model
+
+```R
+#The two tests below might need to creat a subset where there is no Na using na.omit
+GSS_na_omit <- na.omit(GSS_employment_status_simplified_V1)
+GSS_na_omit$ref_level_full_time <- relevel(GSS_na_omit$wrkstat_2,ref="working fulltime")
+Model_1_bis <- multinom(data=GSS_na_omit,GSS_na_omit$ref_level_full_time ~ sexnow + age + degree)
+stargazer(Model_1_bis, type="text")
+```
+
+#### Test #1
+
+```R
+library(generalhoslem)
+logitgof(GSS_na_omit$ref_level_full_time, fitted(Model_1_bis), g=10)
+#no evidence of poor fit if p-value is up to 0.05 / it is the case here --- p-value = 0.7333
+```
+
+#### Test #2
+
+```R
+library(DescTools)
+PseudoR2(Model_1_bis,which="all")
+# report the McFadden adjusted R2, the AIC and the BIC of the model
+```
+
+
+
+### Create a classification matrix
+
+```R
+library(summarytools)
+ctable <- table(GSS_na_omit$wrkstat_2, predict(Model_1_bis))
+#table(GSS_na_omit$wrkstat_2, predict(Model_1_bis))           # do this directly
+
+#table(GSS_na_omit$ref_level_full_time,predict(Model_1_bis))  # this one is easier to read
+```
+
+```R
+                   working fulltime keeping house not working working parttime
+  keeping house                  81            19           0                0
+  not working                    53             2           0                0
+  working fulltime              545             9           0                0
+  working parttime              111             7           0                0
+```
+
+* Row: prediction
+* Column: real
+
+e.g. To interpret Row 1: Among those `keeping house` people, the model predict 19 of them correctly as `keeping house`; but 81 of them are wrongly predicted as `working fulltime`.
+
+
+
+Q3.6
+
+... where degree high school will be the basic outcome of the variable degree, and where “white” will be basic outcome...
+
+```R
+GSS_na_omit$degree_reordered <- ordered(GSS_na_omit$degree, levels=c("lt high school","high school","junior college","bachelor","graduate"))
+
+GSS_na_omit$race_reordered <- ordered(GSS_na_omit$race, levels=c("white","black","other"))
+
+Model_8 <- multinom(data=GSS_na_omit, GSS_na_omit$ref_level_full_time ~ sexnow + age_sq + degree_reordered + race_reordered + childs_2)
+
+stargazer(Model_8, type="text")
+
+table(GSS_na_omit$wrkstat_2, predict(Model_8))
+```
 
