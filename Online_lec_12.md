@@ -146,3 +146,6 @@ stargazer(Model_8, type="text")
 table(GSS_na_omit$wrkstat_2, predict(Model_8))
 ```
 
+---
+
+Check `Tutorial 12 - additional notice.docx`!!!!!
