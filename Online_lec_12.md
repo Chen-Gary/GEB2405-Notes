@@ -87,7 +87,7 @@ Model_1_bis <- multinom(data=GSS_na_omit,GSS_na_omit$ref_level_full_time ~ sexno
 stargazer(Model_1_bis, type="text")
 ```
 
-#### Test #1
+#### Test #1 (The Hosmer and Lemershow test)
 
 ```R
 library(generalhoslem)
@@ -95,7 +95,11 @@ logitgof(GSS_na_omit$ref_level_full_time, fitted(Model_1_bis), g=10)
 #no evidence of poor fit if p-value is up to 0.05 / it is the case here --- p-value = 0.7333
 ```
 
-#### Test #2
+For this test if the **p-value** is small, **below 0.05**, it means that there is a **poor fit**. 
+
+
+
+#### Test #2 (The Pseudo R Square test in logistic regression)
 
 ```R
 library(DescTools)
@@ -103,9 +107,13 @@ PseudoR2(Model_1_bis,which="all")
 # report the McFadden adjusted R2, the AIC and the BIC of the model
 ```
 
+When the Mc Fadden’s R² is 0.2 to 0.4; it represents an excellent fit, while closer from 1 is the better. In Social science, a Mc Fadden’s R² =0.1 will be already consider as a quite acceptable, though it is not very strong.
 
 
-### Create a classification matrix
+
+### Create a classification table / confusion matrix
+
+The above two tests only provide information about the **general fitting** of the model. ===> We need **classification table**.
 
 ```R
 library(summarytools)
@@ -148,4 +156,5 @@ table(GSS_na_omit$wrkstat_2, predict(Model_8))
 
 ---
 
-Check `Tutorial 12 - additional notice.docx`!!!!!
+`Tutorial 12 - additional notice.docx`
+
