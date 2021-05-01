@@ -83,7 +83,7 @@ We build in total 3 models... If we simply choose the model with lowest AIC for 
 #The two tests below might need to creat a subset where there is no Na using na.omit
 GSS_na_omit <- na.omit(GSS_employment_status_simplified_V1)
 GSS_na_omit$ref_level_full_time <- relevel(GSS_na_omit$wrkstat_2,ref="working fulltime")
-Model_1_bis <- multinom(data=GSS_na_omit,GSS_na_omit$ref_level_full_time ~ sexnow + age + degree)
+Model_1_bis <- multinom(data=GSS_na_omit, GSS_na_omit$ref_level_full_time ~ sexnow + age + degree)
 stargazer(Model_1_bis, type="text")
 ```
 
@@ -103,11 +103,15 @@ For this test if the **p-value** is small, **below 0.05**, it means that there i
 
 ```R
 library(DescTools)
-PseudoR2(Model_1_bis,which="all")
+PseudoR2(Model_1_bis, which="all")
 # report the McFadden adjusted R2, the AIC and the BIC of the model
 ```
 
-When the Mc Fadden’s R² is 0.2 to 0.4; it represents an excellent fit, while closer from 1 is the better. In Social science, a Mc Fadden’s R² =0.1 will be already consider as a quite acceptable, though it is not very strong.
+Look at `McFadden` (第一个).
+
+When the Mc Fadden’s R² is **0.2 to 0.4**; it represents an excellent fit (**very good**), while closer from 1 is the better. In Social science, a Mc Fadden’s R² =0.1 will be already consider as a quite acceptable, though it is not very strong.
+
+Mc Fadden’s R² **> 0.1** ==> the model is acceptable
 
 
 
@@ -120,7 +124,7 @@ library(summarytools)
 ctable <- table(GSS_na_omit$wrkstat_2, predict(Model_1_bis))
 #table(GSS_na_omit$wrkstat_2, predict(Model_1_bis))           # do this directly
 
-#table(GSS_na_omit$ref_level_full_time,predict(Model_1_bis))  # this one is easier to read
+#table(GSS_na_omit$ref_level_full_time, predict(Model_1_bis))  # this one is easier to read
 ```
 
 ```R
