@@ -55,7 +55,7 @@ How to read the `summary(multinomial_model1)`
 
 ![](Online_lec_12_img/2.png)
 
-(Typo: "37.4%" should be replaced by 62.6%)
+(Typo: "37.4%" should be replaced by "62.6%")
 
 ![](Online_lec_12_img/3.png)
 
