@@ -110,7 +110,7 @@ library(LogisticDx)
 
 1. **Numerical approach**
 
-   If **Δβ** **is** **greater** **than** **1**, the we must remove the influential case and or revise the model (**model not good**)
+   If **Δβ** **is** **greater** **than** **1**, then we must remove the influential case and or revise the model (**model not good**)
 
    ```R
    # see ppt for image example

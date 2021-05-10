@@ -75,7 +75,7 @@ library(jtools)
 export_summs(model1, model2, model3, scale=TRUE)
 
 # example
-export_summs(logitman1,logitman2,logitman3,scale=TRUE)
+export_summs(logitman1,logitman2,logitman3, scale=TRUE)
 ```
 
 Note that R does not display the **basic outcome** (the level with which other levels are compared).

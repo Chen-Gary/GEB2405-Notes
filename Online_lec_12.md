@@ -30,7 +30,7 @@ multinomial_model1 <- multinom(ml$prog_2 ~ ses + write, data = ml)
 # different from `glm()` you should define the basic outcome
 
 summary(multinomial_model1)
-stargazer(multinomial_model1,type="text")
+stargazer(multinomial_model1, type="text")
 ```
 
 The dependent variable `prog` have 3 levels: academic, vocation, general
@@ -45,7 +45,7 @@ How to read the `summary(multinomial_model1)`
 
 ==> use `library(stargazer)` to obtain readable outputs
 
-==> `stargazer(multinomial_model1,type="text")`
+==> `stargazer(multinomial_model1, type="text")`
 
 ==> How to read?
 
@@ -54,6 +54,8 @@ How to read the `summary(multinomial_model1)`
 (AIC is given at the bottom)
 
 ![](Online_lec_12_img/2.png)
+
+(Typo: "37.4%" should be replaced by 62.6%)
 
 ![](Online_lec_12_img/3.png)
 
@@ -82,7 +84,7 @@ We build in total 3 models... If we simply choose the model with lowest AIC for 
 ```R
 #The two tests below might need to creat a subset where there is no Na using na.omit
 GSS_na_omit <- na.omit(GSS_employment_status_simplified_V1)
-GSS_na_omit$ref_level_full_time <- relevel(GSS_na_omit$wrkstat_2,ref="working fulltime")
+GSS_na_omit$ref_level_full_time <- relevel(GSS_na_omit$wrkstat_2, ref="working fulltime")
 Model_1_bis <- multinom(data=GSS_na_omit, GSS_na_omit$ref_level_full_time ~ sexnow + age + degree)
 stargazer(Model_1_bis, type="text")
 ```
